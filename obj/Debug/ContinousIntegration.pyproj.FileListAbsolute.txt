@@ -1,0 +1,1 @@
+D:\Python\new\ci\ContinousIntegration\ContinousIntegration\obj\Debug\ContinousIntegration.pyproj.CoreCompileInputs.cache
