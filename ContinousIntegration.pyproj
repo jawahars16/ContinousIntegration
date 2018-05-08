@@ -6,7 +6,7 @@
     <ProjectGuid>b1af729b-e481-4853-8cc7-66828e899f9b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <ProjectTypeGuids>{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
-    <StartupFile>app\app.py</StartupFile>
+    <StartupFile>app\main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,19 +33,12 @@
   <ItemGroup>
     <Folder Include="app\build\" />
     <Folder Include="app\tasks\" />
+    <Folder Include="app\tasks\test\" />
     <Folder Include="app\task\" />
     <Folder Include="app\_common\" />
     <Folder Include="app\_common\__pycache__\" />
     <Folder Include="app\" />
     <Folder Include="app\job\" />
-    <Folder Include="tasks\" />
-    <Folder Include="tasks\" />
-    <Folder Include="app\tasks\test\" />
-    <Folder Include="app\tasks\test\__pycache__\" />
-    <Folder Include="app\tasks\util\" />
-    <Folder Include="app\tasks\__pycache__\" />
-    <Folder Include="tasks\test\" />
-    <Folder Include="tasks\util\" />
     <Folder Include="test\" />
     <Folder Include="test\__pycache__\" />
   </ItemGroup>
@@ -53,16 +46,13 @@
     <Content Include="app\_common\__pycache__\task_loader.cpython-36.pyc" />
     <Content Include="app\_common\__pycache__\__init__.cpython-36.pyc" />
     <Content Include="requirements.txt" />
-    <Content Include="app\tasks\test\__pycache__\test_task.cpython-36.pyc" />
-    <Content Include="app\tasks\test\__pycache__\__init__.cpython-36.pyc" />
-    <Content Include="app\tasks\__pycache__\__init__.cpython-36.pyc" />
     <Content Include="test\__pycache__\test_build.cpython-36.pyc" />
     <Content Include="test\__pycache__\test_job.cpython-36.pyc" />
     <Content Include="test\__pycache__\test_task.cpython-36.pyc" />
     <Content Include="test\__pycache__\test_task_loader.cpython-36.pyc" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="app\app.py" />
+    <Compile Include="app\main.py" />
     <Compile Include="app\build\service.py">
       <SubType>Code</SubType>
     </Compile>
@@ -84,6 +74,7 @@
     <Compile Include="app\plugin.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\tasks\test\test_task.py" />
     <Compile Include="app\task\service.py">
       <SubType>Code</SubType>
     </Compile>
@@ -95,15 +86,9 @@
     </Compile>
     <Compile Include="app\_common\enum.py" />
     <Compile Include="app\_common\error.py" />
-    <Compile Include="app\_common\task_loader.py" />
+    <Compile Include="app\_common\util.py" />
     <Compile Include="app\_common\__init__.py" />
     <Compile Include="app\database.py" />
-    <Compile Include="app\tasks\test\test_task.py" />
-    <Compile Include="app\tasks\test\__init__.py" />
-    <Compile Include="app\tasks\util\delete_files.py" />
-    <Compile Include="app\tasks\util\__init__.py" />
-    <Compile Include="tasks\test\test_task.py" />
-    <Compile Include="tasks\util\delete_files.py" />
     <Compile Include="test\test_build.py" />
     <Compile Include="test\test_job.py" />
     <Compile Include="test\test_task.py" />

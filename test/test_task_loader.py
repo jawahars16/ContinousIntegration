@@ -2,7 +2,7 @@ import logging
 import os
 from unittest import TestCase
 from app.config import Config
-from app._common.task_loader import TaskLoader
+from app._common.util import TaskLoader
 
 
 class TestTaskLoader(TestCase):

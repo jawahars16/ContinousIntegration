@@ -37,7 +37,7 @@ class TaskLoader:
         def form_module(fp): return '.' + os.path.splitext(fp)[0]
         plugins = map(form_module, pluginfiles)
 
-        module_name = f'{Config.TASK_DIR}{self.__resolve_category__(category, ".")}'
+        module_name = f'{os.path.basename(self.path)}{self.__resolve_category__(category, ".")}'
         logging.debug(f'Importing module {module_name}')
 
         # Load parent module

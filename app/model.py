@@ -43,6 +43,7 @@ class Step(Base):
         
 class TaskParameter(Base):
     __tablename__ = 'task_parameter'
+    __table_args__ = {'useexisting': True}
 
     id = Column(Integer, primary_key=True)
     step = Column(Integer, ForeignKey('step.id'), nullable=False)

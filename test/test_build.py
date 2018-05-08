@@ -1,24 +1,23 @@
 from unittest import TestCase
+from app.main import Application
 from app.database import Database
 from app.build.service import BuildService
 from app.job.service import JobService
 import logging
 
-
 class TestBuild(TestCase):
 
     def setUp(self):
-        self.testdb = Database('sqlite:///test/data/database.db')
-        logging.getLogger().setLevel(logging.DEBUG)
+        self.app = Application()
 
     def tearDown(self):
-        self.testdb.dropAll()
+        self.app.database.dropAll()
 
     def test_queue_build(self):
-        build_service = BuildService(self.testdb)
-        job_service = JobService(self.testdb)
+        build_service = BuildService(self.app.database)
+        job_service = JobService(self.app.database)
 
-        job_service.add_job('Test job')
+        job_service.create_job('Test job')
         job = job_service.get_jobs()[0]
 
         self.assertIsNotNone(job)

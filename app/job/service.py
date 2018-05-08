@@ -8,7 +8,7 @@ class JobService:
     def __init__(self, db: Database):
         self.db = db
 
-    def add_job(self, title, description=None, job=None):
+    def create_job(self, title, description=None, job=None):
 
         if title is None:
             logging.warning('Title field is mandatory to add a job')

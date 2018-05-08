@@ -4,36 +4,34 @@ from app.database import Database
 from unittest import TestCase
 import logging
 from app.model import Job, TaskParameter, Step
-
+from app.main import Application
 
 class TestJob(TestCase):
 
     def setUp(self):
-        self.testdb = Database('sqlite:///test/data/database.db')
-        logging.getLogger().setLevel(logging.DEBUG)
+        self.app = Application()
 
     def tearDown(self):
-        pass
-        self.testdb.dropAll()
+        self.app.database.dropAll()
 
     def test_add_job(self):
-        service = JobService(self.testdb)
-        service.add_job('Test title', 'Test description')
+        service = JobService(self.app.database)
+        service.create_job('Test title', 'Test description')
 
         jobs = service.get_jobs()
         self.assertEqual(1, len(jobs))
         self.assertEqual(jobs[0].title, 'Test title')
 
     def test_add_job_without_title(self):
-        service = JobService(self.testdb)
-        service.add_job(None)
+        service = JobService(self.app.database)
+        service.create_job(None)
 
         jobs = service.get_jobs()
         self.assertEqual(0, len(jobs))
 
     def test_add_steps_to_job(self):
-        service = JobService(self.testdb)
-        service.add_job('Test title', 'Test description')
+        service = JobService(self.app.database)
+        service.create_job('Test title', 'Test description')
 
         jobs = service.get_jobs()
         job_id = jobs[0].id

@@ -1,14 +1,9 @@
 from sqlalchemy import create_engine
+from builtins import Exception
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import NullPool
-
-from app.model import Base
-# from model import job
-# from model import step
-# from model import step
-# from model import step
-
 from contextlib import contextmanager
+from app.model import *
 import logging
 
 
@@ -22,13 +17,16 @@ class Database:
         except Exception as e:
             logging.error('Database creation failed')
             logging.error(e)
-            raise
 
     def newsession(self):
         return self.session()
 
     def dropAll(self):
-        Base.metadata.drop_all(self.engine)
+        try:
+            Base.metadata.drop_all(self.engine)
+        except Exception as error:
+            logging.error(error)
+
 
     @contextmanager
     def new_session(self):
