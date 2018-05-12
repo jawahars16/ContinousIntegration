@@ -12,10 +12,10 @@ class TestJob(TestCase):
         self.app = Application()
 
     def tearDown(self):
-        self.app.database.dropAll()
+        self.app.reset()
 
     def test_add_job(self):
-        service = JobService(self.app.database)
+        service = JobService(self.app.database, self.app.storage)
         service.create_job('Test title', 'Test description')
 
         jobs = service.get_jobs()
@@ -23,14 +23,14 @@ class TestJob(TestCase):
         self.assertEqual(jobs[0].title, 'Test title')
 
     def test_add_job_without_title(self):
-        service = JobService(self.app.database)
+        service = JobService(self.app.database, self.app.storage)
         service.create_job(None)
 
         jobs = service.get_jobs()
         self.assertEqual(0, len(jobs))
 
     def test_add_steps_to_job(self):
-        service = JobService(self.app.database)
+        service = JobService(self.app.database, self.app.storage)
         service.create_job('Test title', 'Test description')
 
         jobs = service.get_jobs()

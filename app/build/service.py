@@ -1,7 +1,7 @@
 from datetime import datetime
 from app.model import Job, Build
-from app._common.enum import BuildStatus
-from app._common.error import ServiceError
+from app._common.enumeration import BuildStatus
+from app._common.error import JobNotFoundError
 
 
 class BuildService:
@@ -17,7 +17,7 @@ class BuildService:
             job = session.query(Job).filter(Job.id == job_id).one()
 
         if job is None:
-            raise ServiceError(f'Job with {job_id} not found')
+            raise JobNotFoundError(f'Job with {job_id} not found')
 
         build = Build(
             id=datetime.utcnow().strftime("%Y%m%d.%f"),

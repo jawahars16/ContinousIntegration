@@ -5,7 +5,23 @@ import os
 import re
 from app.config import Config
 from app.plugin import Task, TaskBase
+from app._common.error import DirectoryExistsError
 
+class Storage:
+    def __init__(self, root_directory):
+        self.root_directory = root_directory
+        if not os.path.exists(self.root_directory):
+            os.makedirs(self.root_directory)
+
+
+    def create_directory(self, directory_name):
+        directory = os.path.join(self.root_directory, directory_name)
+
+        if os.path.exists(directory):
+            raise DirectoryExistsError();
+
+        os.makedirs(directory)
+        return directory
 
 class TaskLoader:
 
@@ -37,7 +53,7 @@ class TaskLoader:
         def form_module(fp): return '.' + os.path.splitext(fp)[0]
         plugins = map(form_module, pluginfiles)
 
-        module_name = f'{os.path.basename(self.path)}{self.__resolve_category__(category, ".")}'
+        module_name = f'app.tasks{self.__resolve_category__(category, ".")}'
         logging.debug(f'Importing module {module_name}')
 
         # Load parent module

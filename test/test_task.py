@@ -6,12 +6,13 @@ from app.config import Config
 from app._common.util import TaskLoader
 from app.task.service import TaskService
 
-logging.getLogger().setLevel(logging.DEBUG)
-
 class TestTask(TestCase):
 
     def setUp(self):
         self.app = Application()
+
+    def tearDown(self):
+        self.app.reset()
 
     def test_load_tasks(self):
         service = TaskService(self.app.taskloader)

@@ -1,23 +1,29 @@
 import logging
 from app.database import Database
+from app._common.util import Storage
 from app.model import Step, Job
+import datetime
 
 
 class JobService:
 
-    def __init__(self, db: Database):
+    def __init__(self, db: Database, storage: Storage):
         self.db = db
+        self.storage = storage
 
-    def create_job(self, title, description=None, job=None):
+    def create_job(self, title, description=None):
 
         if title is None:
             logging.warning('Title field is mandatory to add a job')
             return False
 
+        job_directory = self.storage.create_directory(f'title_{datetime.datetime.now.strftime("%Y%m%d%H%M%S")}')
+
         job = Job(
-            id=job,
+            id=None,
             title=title,
-            description=description
+            description=description,
+            directory = job_directory
         )
 
         with self.db.new_session() as session:

@@ -4,3 +4,4 @@
 *.db
 obj
 *.suo
+/env

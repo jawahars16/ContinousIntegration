@@ -11,11 +11,11 @@ class TestBuild(TestCase):
         self.app = Application()
 
     def tearDown(self):
-        self.app.database.dropAll()
+        self.app.reset()
 
     def test_queue_build(self):
         build_service = BuildService(self.app.database)
-        job_service = JobService(self.app.database)
+        job_service = JobService(self.app.database, self.app.storage)
 
         job_service.create_job('Test job')
         job = job_service.get_jobs()[0]

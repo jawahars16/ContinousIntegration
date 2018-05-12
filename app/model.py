@@ -23,6 +23,7 @@ class Job(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(50), nullable=False)
     description = Column(String(50))
+    directory = Column(String(260), nullable=False)
     steps = relationship('Step', lazy='select')
     created_on = Column(DateTime, default=datetime.utcnow(), nullable=False)
     updated_on = Column(DateTime, default=datetime.utcnow())

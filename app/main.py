@@ -1,7 +1,7 @@
 import logging
 import os
 from app.config import Config
-from app._common.util import TaskLoader
+from app._common.util import TaskLoader, Storage
 from app.database import Database
 
 class Application:
@@ -14,10 +14,13 @@ class Application:
         self.database = Database(Config.DATABASE_PATH)
 
         # Initiatlize task loader
-        self.taskloader = TaskLoader(os.path.join(os.path.dirname(__file__), Config.TASK_DIR))
+        self.taskloader = TaskLoader(os.path.join(os.path.dirname(__file__), 'tasks'))
 
-        if not os.path.exists(Config.WORK_DIR):
-            os.makedirs(Config.WORK_DIR)
+        # Initialize the storage
+        self.storage = Storage('F:\Git\work')
+
+    def reset():
+        self.database.dropAll()
 
 if __name__ == "__main__":
     app = Application()
