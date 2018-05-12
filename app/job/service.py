@@ -17,7 +17,8 @@ class JobService:
             logging.warning('Title field is mandatory to add a job')
             return False
 
-        job_directory = self.storage.create_directory(f'title_{datetime.datetime.now.strftime("%Y%m%d%H%M%S")}')
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        job_directory = self.storage.create_directory(f'title_{timestamp}')
 
         job = Job(
             id=None,

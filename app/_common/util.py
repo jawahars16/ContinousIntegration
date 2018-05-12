@@ -5,7 +5,6 @@ import os
 import re
 from app.config import Config
 from app.plugin import Task, TaskBase
-from app._common.error import DirectoryExistsError
 
 class Storage:
     def __init__(self, root_directory):
@@ -16,9 +15,6 @@ class Storage:
 
     def create_directory(self, directory_name):
         directory = os.path.join(self.root_directory, directory_name)
-
-        if os.path.exists(directory):
-            raise DirectoryExistsError();
 
         os.makedirs(directory)
         return directory

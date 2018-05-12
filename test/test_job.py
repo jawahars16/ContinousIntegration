@@ -21,6 +21,7 @@ class TestJob(TestCase):
         jobs = service.get_jobs()
         self.assertEqual(1, len(jobs))
         self.assertEqual(jobs[0].title, 'Test title')
+        self.assertTrue(os.path.exists(jobs[0].directory))
 
     def test_add_job_without_title(self):
         service = JobService(self.app.database, self.app.storage)

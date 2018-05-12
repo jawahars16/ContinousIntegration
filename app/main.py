@@ -19,7 +19,7 @@ class Application:
         # Initialize the storage
         self.storage = Storage('F:\Git\work')
 
-    def reset():
+    def reset(self):
         self.database.dropAll()
 
 if __name__ == "__main__":
