@@ -17,7 +17,7 @@ class Application:
         self.taskloader = TaskLoader(os.path.join(os.path.dirname(__file__), 'tasks'))
 
         # Initialize the storage
-        self.storage = Storage('F:\Git\work')
+        self.storage = Storage(os.path.join(os.path.dirname(__file__), 'work')
 
     def reset(self):
         self.database.dropAll()

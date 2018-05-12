@@ -97,6 +97,9 @@
     <Compile Include="app\database.py" />
     <Compile Include="test\test_build.py" />
     <Compile Include="test\test_job.py" />
+    <Compile Include="test\test_storage.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="test\test_task.py" />
     <Compile Include="test\test_task_loader.py" />
     <Compile Include="test\__init__.py" />
