@@ -11,3 +11,4 @@ class TestStorage(TestCase):
     def test_create_directory(self):
         test_directory = self.storage.create_directory('test_directory')
         self.assertTrue(os.path.exists(test_directory))
+
